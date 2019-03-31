@@ -7,7 +7,6 @@ import UploaderButton from './UploaderButton'
 
 class Uploader extends Component {
   state = {
-    loading: true,
     uploading: false
   }
 
@@ -20,13 +19,13 @@ class Uploader extends Component {
       formData.append(i, file)
     })
     this.setState({ uploading: true })
-    this.props.fetchImages(formData, () => {
+    this.props.uploadImages(formData, () => {
       this.setState({ uploading: false })
     })
   }
 
   render() {
-    const { loading, uploading } = this.state
+    const { uploading } = this.state
 
     const images = this.props.images
 
