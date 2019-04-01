@@ -4,8 +4,8 @@ import React from 'react'
 
 export default props =>
   props.images.map((image, i) => (
-    <div key={i} className="fadein">
-      <img src={image.secure_url} alt="" />
+    <div key={i} className="fadein" style={{ flex: '33.33%', padding: '5px' }}>
+      <img src={image.secure_url} alt="" style={{ height: '40%', width: '200px' }} />
     </div>
   ))
 

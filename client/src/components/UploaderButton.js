@@ -5,10 +5,10 @@ import './UploaderButton.css'
 
 const UploaderButton = props => {
   return (
-    <div className="center-align " style={{ marginTop: '200px' }}>
-      <div className="button ">
+    <div className="center-align" style={{ marginTop: '50px' }}>
+      <div>
         <label htmlFor="multi">
-          <FontAwesomeIcon icon={faImages} color="#4db6ac" size="10x" id="icon" />
+          <FontAwesomeIcon icon={faImages} color="#4db6ac" size="7x" id="icon" />
         </label>
       </div>
       <input
@@ -16,7 +16,7 @@ const UploaderButton = props => {
         id="multi"
         onChange={props.onChange}
         multiple
-        style={{ marginLeft: '120px' }}
+        style={{ marginLeft: '100px' }}
       />
     </div>
   )

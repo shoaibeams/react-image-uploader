@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './components/App'
 import Header from './components/Header'
-import Uploader from './components/Uploader'
+import UploadForm from './components/UploadForm'
 import ImageViewer from './components/ImageViewer'
-
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
@@ -19,7 +18,7 @@ ReactDOM.render(
     <Router>
       <Header />
       <Route path="/" exact component={App} />
-      <Route path="/upload" component={Uploader} />
+      <Route path="/upload" component={UploadForm} />
       <Route path="/images" component={ImageViewer} />
     </Router>
   </Provider>,

@@ -38,7 +38,6 @@ module.exports = (app, db) => {
         images.push({ original_filename, secure_url })
       })
       res.json(images)
-      console.log(images)
     })
   })
 }
