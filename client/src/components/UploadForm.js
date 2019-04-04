@@ -8,6 +8,7 @@ import DayPickerInput from 'react-day-picker/DayPickerInput'
 import { formatDate, parseDate } from 'react-day-picker/moment'
 import 'moment/locale/it'
 import 'react-day-picker/lib/style.css'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 class UploadForm extends Component {
   state = { uploading: false, amount: '', errorMessage: '' }
@@ -33,17 +34,17 @@ class UploadForm extends Component {
 
   onSubmit = event => {
     event.preventDefault()
-    console.log(this.props)
 
     const { amount, selectedDay } = this.state
     const images = this.props.images
 
-    if (amount === '') {
-      this.setState({ errorMessage: 'You have to enter an amount!' })
-    } else if (!selectedDay) {
-      this.setState({ errorMessage: 'You have to select a day!' })
+    if (images.length === 0 || !selectedDay || amount === '') {
+      this.setState({ errorMessage: "You can't leave any field blank." })
     }
-    this.props.submitData({ images, amount, selectedDay })
+    console.log(this.props)
+    this.props.submitData({ images, amount, selectedDay }, () =>
+      this.props.history.push('/images')
+    )
   }
 
   onChange = e => {
@@ -62,6 +63,7 @@ class UploadForm extends Component {
   renderUploadButtonAndImage = () => {
     const { uploading } = this.state
     const { images } = this.props
+    let now = 40
 
     switch (!uploading && images.length > 0) {
       case true:
@@ -73,6 +75,7 @@ class UploadForm extends Component {
       case !uploading:
         return (
           <div>
+            <ProgressBar variant="warning" now={now} />
             <Spinner />
           </div>
         )

@@ -7,9 +7,9 @@ class App extends Component {
       <div className="center-align" style={{ marginTop: '200px' }}>
         <h3>Welcome to Uploader!</h3>
         <p>
-          Let's get started. To upload your first image, click{' '}
+          Let's get started. To upload an image, click{' '}
           <Link to="/upload">
-            <span>here</span>
+            <span >here</span>
           </Link>
           .
         </p>

@@ -13,19 +13,21 @@ export const uploadImages = (formData, cb) => async dispatch => {
   cb()
 }
 
-export const submitData = formData => async dispatch => {
+export const submitData = (formData, cb) => async dispatch => {
   console.log(formData)
-  // await axios.post(`${URL}/submit`, formData)
+  await axios.post(`${URL}/submit`, formData)
   dispatch({
     type: SUBMIT_FORM,
     payload: formData
   })
+  cb()
 }
 
-export const fetchImages = () => async dispatch => {
+export const fetchImages = cb => async dispatch => {
   const response = await axios.get(`${URL}/images`)
   dispatch({
     type: FETCH_IMAGES,
     payload: response.data
   })
+  cb()
 }

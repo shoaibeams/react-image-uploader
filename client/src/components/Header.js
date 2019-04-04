@@ -1,14 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './Header.css'
 
 const Header = () => {
   return (
     <nav>
-      <div className="nav-wrapper center teal lighten-2">
-        <Link to="/" className="brand-logo">
+      <div
+        id="header-nav"
+        className="nav-wrapper center teal lighten-2"
+        style={{ paddingRight: '120px' }}
+      >
+        <Link to="/" id='brand-logo' className="brand-logo">
           Uploader
         </Link>
-        <ul className="left ">
+        <ul className="left">
           <li>
             <Link to="/upload">Upload an Image</Link>
           </li>

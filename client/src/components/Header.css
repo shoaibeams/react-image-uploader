@@ -1,0 +1,32 @@
+html a {
+    font-family: 'Roboto'  
+}
+
+h3 {
+    font-family: 'Roboto' 
+}
+
+#brand-logo {
+    font-size: 25px;
+    font-weight: bold;
+    overflow: hidden;       
+}
+
+.left a{
+    font-size: 13px;
+   overflow: hidden; 
+}
+
+a:hover {   
+    color: white;
+    text-decoration: none;
+}
+
+a:enabled span {
+    color: blue;
+}
+
+a:enabled{
+    color: white;
+    text-decoration: none;
+}

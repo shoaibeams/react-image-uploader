@@ -1,6 +1,6 @@
 const express = require('express')
 const mysql = require('mysql')
-// const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 const formData = require('express-form-data')
 const cors = require('cors')
 const morgan = require('morgan')
@@ -15,11 +15,12 @@ const db = mysql.createConnection({
   multipleStatements: true
 })
 
-//App Setup
+//App Setup and Middlewares
 app.use(morgan('combined'))
 app.use(cors())
+app.use(bodyParser.json())
+
 app.use(formData.parse())
-// app.use(bodyParser.json({ type: '*/*', limit: '20mb' }))
 router(app, db)
 
 app.listen(process.env.PORT || 3050, () => {

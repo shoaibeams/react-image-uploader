@@ -7,17 +7,11 @@ const UploaderButton = props => {
   return (
     <div className="center-align" style={{ marginTop: '50px' }}>
       <div>
-        <label htmlFor="multi">
+        <label id="multi">
           <FontAwesomeIcon icon={faImages} color="#4db6ac" size="7x" id="icon" />
+          <input type="file" onChange={props.onChange} multiple />
         </label>
       </div>
-      <input
-        type="file"
-        id="multi"
-        onChange={props.onChange}
-        multiple
-        style={{ marginLeft: '100px' }}
-      />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 const cloudinary = require('cloudinary')
 const keys = require('./config/keys')
-const saveImage = require('./queries/saveImages')
 const fetchImages = require('./queries/fetchImages')
+const saveFormData = require('./queries/saveFormData')
 
 module.exports = (app, db) => {
   //Cloudinary Configuration
@@ -12,19 +12,30 @@ module.exports = (app, db) => {
   })
 
   app.post('/upload', (req, res) => {
-    let name, url
     const values = Object.values(req.files)
     const promises = values.map(image =>
       cloudinary.v2.uploader.upload(image.path, { folder: 'Test' })
     )
-
     Promise.all(promises).then(results => {
       res.json(results)
-
-      results.map(({ original_filename, secure_url }) => {
-        db.query(saveImage, [original_filename, secure_url])
-      })
     })
+  })
+
+  app.post('/submit', (req, res) => {
+    const { images, selectedDay } = req.body
+    let { amount } = req.body
+    amount = parseInt(amount, 10)
+    console.log(typeof selectedDay)
+
+    images.map(({ original_filename, secure_url }) => {
+      db.query(saveFormData, [
+        original_filename,
+        secure_url,
+        amount,
+        selectedDay.slice(0, 10)
+      ])
+    })
+    res.json()
   })
 
   app.get('/images', (req, res) => {
