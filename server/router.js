@@ -42,10 +42,9 @@ module.exports = (app, db) => {
     let images = []
     db.query(fetchImages, (error, results) => {
       if (error) {
-        return console.error(error.message)
+        throw error
       }
-
-      results[1].map(({ original_filename, secure_url }) => {
+      results[3].map(({ original_filename, secure_url }) => {
         images.push({ original_filename, secure_url })
       })
       res.json(images)

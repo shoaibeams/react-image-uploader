@@ -10,7 +10,7 @@ const Header = () => {
         className="nav-wrapper center teal lighten-2"
         style={{ paddingRight: '120px' }}
       >
-        <Link to="/" id='brand-logo' className="brand-logo">
+        <Link to="/" id="brand-logo" className="brand-logo">
           Uploader
         </Link>
         <ul className="left">

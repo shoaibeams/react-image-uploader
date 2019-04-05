@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './components/App'
 import Header from './components/Header'
-import UploadForm from './components/UploadForm'
+import Uploader from './components/Uploader'
 import ImageViewer from './components/ImageViewer'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
@@ -18,7 +18,7 @@ ReactDOM.render(
     <Router>
       <Header />
       <Route path="/" exact component={App} />
-      <Route path="/upload" component={UploadForm} />
+      <Route path="/upload" component={Uploader} />
       <Route path="/images" component={ImageViewer} />
     </Router>
   </Provider>,

@@ -9,9 +9,14 @@ class ImageViewer extends Component {
     uploading: false
   }
   componentDidMount = () => {
-    this.props.fetchImages(() => {
-      this.setState({ uploading: false })
-    })
+    this.setState({ uploading: false })
+    this.props.fetchImages()
+  }
+
+  componentDidUpdate = prevProps => {
+    if (prevProps.images === this.props.images) {
+      this.props.fetchImages()
+    }
   }
 
   renderImages(images) {
@@ -27,7 +32,7 @@ class ImageViewer extends Component {
       >
         <h3>Images</h3>
         <p>Hover cursor over the image to see the enlarged image.</p>
-        <Images images={images} />
+        <Images images={images} now={0} />
       </div>
     )
   }
@@ -39,11 +44,7 @@ class ImageViewer extends Component {
       case true:
         return <Spinner />
       case images.length > 0:
-        return (
-          <div className="center-align" style={{ marginTop: '200px' }}>
-            <h3>View your uploaded images here</h3>
-          </div>
-        )
+        return <div />
       default:
         return this.renderImages(images)
     }

@@ -19,7 +19,6 @@ const db = mysql.createConnection({
 app.use(morgan('combined'))
 app.use(cors())
 app.use(bodyParser.json())
-
 app.use(formData.parse())
 router(app, db)
 
