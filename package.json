@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production npm run dev",
+    "start": "npm run dev",
     "dev": "npm-run-all --parallel dev:*",
-    "dev:server": "NODE_ENV=production nodemon index.js",
+    "dev:server": "nodemon index.js",
     "dev:client": "npm start --prefix client",
     "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },

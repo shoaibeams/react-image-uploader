@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 app.use(formData.parse())
 
 let router
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'production') {
   router = require('./routes/routerMongo')
   //MongoDB Setup
   mongoose
