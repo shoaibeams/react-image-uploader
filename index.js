@@ -16,10 +16,10 @@ app.use(bodyParser.json())
 app.use(formData.parse())
 
 let router
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'production') {
   router = require('./routes/routerMongo')
   //MongoDB Setup
-  mongoose6
+  mongoose
     .connect(config.MONGODB_URL, { useNewUrlParser: true })
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err))
