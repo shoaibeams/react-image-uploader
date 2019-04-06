@@ -19,7 +19,7 @@ let router
 if (process.env.NODE_ENV === 'production') {
   router = require('./routes/routerMongo')
   //MongoDB Setup
-  mongoose
+  mongoose6
     .connect(config.MONGODB_URL, { useNewUrlParser: true })
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err))
