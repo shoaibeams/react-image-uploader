@@ -19,7 +19,6 @@ let router
 if (process.env.NODE_ENV === 'production') {
   router = require('./routes/routerMongo')
   //MongoDB Setup
-  // mongoose.Promise = global.Promise
   mongoose
     .connect(config.MONGODB_URL, { useNewUrlParser: true })
     .then(() => console.log('MongoDB Connected'))
