@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
-import Images from './Images'
 import UploadButton from './UploaderButton'
 import UploaderForm from './UploaderForm'
-import ProgressBar from 'react-bootstrap/ProgressBar'
 import Bar from './Bar'
 
 class Uploader extends Component {

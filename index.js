@@ -1,5 +1,6 @@
 const express = require('express')
 const mysql = require('mysql')
+const path = require('path')
 const mongoose = require('mongoose')
 const config = require('./config/config')
 const bodyParser = require('body-parser')
@@ -34,6 +35,13 @@ if (process.env.NODE_ENV === 'production') {
     multipleStatements: true
   })
   router(app, db)
+}
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('../client/build'))
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/', 'build', 'index.html'))
+  })
 }
 
 app.listen(process.env.PORT || 3050, () => {
