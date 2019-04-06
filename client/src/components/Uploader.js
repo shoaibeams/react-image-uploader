@@ -67,7 +67,6 @@ class Uploader extends Component {
         return (
           <div>
             <Bar images={images} number={this.state.number} />
-            {/* <Images images={images} now={1} /> */}
           </div>
         )
       default:

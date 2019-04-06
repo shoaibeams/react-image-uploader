@@ -1,14 +1,14 @@
 const cloudinary = require('cloudinary')
-const keys = require('./config/keys')
-const fetchImages = require('./queries/fetchImages')
-const saveFormData = require('./queries/saveFormData')
+const config = require('../config/config')
+const fetchImages = require('../queries/fetchImages')
+const saveFormData = require('../queries/saveFormData')
 
 module.exports = (app, db) => {
   //Cloudinary Configuration
   cloudinary.config({
-    cloud_name: keys.CLOUD_NAME,
-    api_key: keys.CLOUDINARY_API_KEY,
-    api_secret: keys.CLOUDINARY_SECRET_KEY
+    cloud_name: config.CLOUD_NAME,
+    api_key: config.CLOUDINARY_API_KEY,
+    api_secret: config.CLOUDINARY_SECRET_KEY
   })
 
   app.post('/upload', (req, res) => {
@@ -25,7 +25,6 @@ module.exports = (app, db) => {
     const { images, selectedDay } = req.body
     let { amount } = req.body
     amount = parseInt(amount, 10)
-    console.log(typeof selectedDay)
 
     images.map(({ original_filename, secure_url }) => {
       db.query(saveFormData, [
@@ -51,3 +50,5 @@ module.exports = (app, db) => {
     })
   })
 }
+
+// arrayToObject(results, 'id')[null].image.map((image, i) => images.push(image))
