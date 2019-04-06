@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 app.use(formData.parse())
 
 let router
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV !== 'production') {
   router = require('./routes/routerMongo')
   //MongoDB Setup
   mongoose
@@ -24,17 +24,17 @@ if (process.env.NODE_ENV === 'production') {
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err))
   router(app)
-} else {
-  router = require('./routes/routerMySQL')
-  // SQL connection
-  const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'shoaib96',
-    multipleStatements: true
-  })
-  router(app, db)
-}
+// } else {
+//   router = require('./routes/routerMySQL')
+//   // SQL connection
+//   const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'shoaib96',
+//     multipleStatements: true
+//   })
+//   router(app, db)
+// }
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
