@@ -16,15 +16,15 @@ app.use(bodyParser.json())
 app.use(formData.parse())
 
 let router
-if (process.env.NODE_ENV !== 'production') {
-  router = require('./routes/routerMongo')
-  //MongoDB Setup
-  mongoose
-    .connect(config.MONGODB_URL, { useNewUrlParser: true })
-    .then(() => console.log('MongoDB Connected'))
-    .catch(err => console.log(err))
-  router(app)
-}
+// if (process.env.NODE_ENV !== 'production') {
+router = require('./routes/routerMongo')
+//MongoDB Setup
+mongoose
+  .connect(config.MONGODB_URL, { useNewUrlParser: true })
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err))
+router(app)
+// }
 // } else {
 //   router = require('./routes/routerMySQL')
 //   // SQL connection
