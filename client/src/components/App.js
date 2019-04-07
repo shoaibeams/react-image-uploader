@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Header from './Header'
+import Welcome from './Welcome'
+import Uploader from './Uploader'
+import ImageViewer from './ImageViewer'
 
 class App extends Component {
   render() {
     return (
-      <div className="center-align" style={{ marginTop: '200px' }}>
-        <h3>Welcome to Uploader!</h3>
-        <p>
-          Let's get started. To upload an image, click{' '}
-          <Link to="/upload">
-            <span >here</span>
-          </Link>
-          .
-        </p>
+      <div>
+        <Router>
+          <Header />
+          <Route path="/" exact component={Welcome} />
+          <Route path="/upload" component={Uploader} />
+          <Route path="/images" component={ImageViewer} />
+        </Router>
       </div>
     )
   }
 }
-
 export default App
