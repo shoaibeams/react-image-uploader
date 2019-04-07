@@ -50,5 +50,3 @@ module.exports = (app, db) => {
     })
   })
 }
-
-// arrayToObject(results, 'id')[null].image.map((image, i) => images.push(image))
