@@ -14,6 +14,12 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(formData.parse())
 
+if (process.env.NODE_ENV === 'production') {
+  app.get('/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
+
 let router
 if (process.env.NODE_ENV === 'production') {
   router = require('./routes/routerMongo')
@@ -33,12 +39,6 @@ if (process.env.NODE_ENV === 'production') {
     multipleStatements: true
   })
   router(app, db)
-}
-
-if (process.env.NODE_ENV === 'production') {
-  app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
 }
 
 app.listen(process.env.PORT || 3050, () => {
