@@ -9,6 +9,7 @@ const morgan = require('morgan')
 const app = express()
 
 //App Setup and Middlewares
+app.use(express.static('public'))
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(formData.parse())
