@@ -19,9 +19,9 @@ ReactDOM.render(
     <Router>
       <Header />
       <Route path="/" exact component={App} />
-      <Route path="/upload" component={Uploader} />
-      <Route path="/images" component={ImageViewer} />
-      <Route path="/test" component={Test} />
+      <Route path="/upload" exact component={Uploader} />
+      <Route path="/images" exact component={ImageViewer} />
+      <Route path="/test" exact component={Test} />
     </Router>
   </Provider>,
   document.getElementById('root')
