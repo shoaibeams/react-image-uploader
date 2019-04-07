@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Images from './Images'
-import Spinner from './Spinner'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 
@@ -42,7 +41,7 @@ class ImageViewer extends Component {
 
     switch (images.length > 0 && this.state.uploading) {
       case true:
-        return <Spinner />
+        return <div />
       case images.length > 0:
         return <div />
       default:
