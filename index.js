@@ -9,7 +9,6 @@ const morgan = require('morgan')
 const app = express()
 
 //App Setup and Middlewares
-app.use(express.static('client/build'))
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(formData.parse())
@@ -32,12 +31,14 @@ if (process.env.NODE_ENV === 'production') {
     password: 'shoaib96',
     multipleStatements: true
   })
-  if (process.env.NODE_ENV === 'production') {
-    app.get('/*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-    })
-  }
   router(app, db)
+}
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'))
+  app.get('/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
 }
 
 app.listen(process.env.PORT || 3050, () => {
