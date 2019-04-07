@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { UPLOAD_IMAGES, FETCH_IMAGES, SUBMIT_FORM, URL } from './types'
+import { UPLOAD_IMAGES, FETCH_IMAGES, SUBMIT_FORM } from './types'
 
 export const uploadImages = formData => async dispatch => {
-  const response = await axios.post(`${URL}/upload`, formData)
+  const response = await axios.post(`/upload`, formData)
   dispatch({
     type: UPLOAD_IMAGES,
     payload: {
@@ -13,7 +13,7 @@ export const uploadImages = formData => async dispatch => {
 }
 
 export const submitData = formData => async dispatch => {
-  await axios.post(`${URL}/submit`, formData)
+  await axios.post(`/submit`, formData)
   dispatch({
     type: SUBMIT_FORM,
     payload: formData
@@ -21,7 +21,7 @@ export const submitData = formData => async dispatch => {
 }
 
 export const fetchImages = () => async dispatch => {
-  const response = await axios.get(`${URL}/images`)
+  const response = await axios.get(`/images`)
   dispatch({
     type: FETCH_IMAGES,
     payload: response.data
