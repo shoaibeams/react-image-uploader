@@ -21,7 +21,7 @@ export const submitData = formData => async dispatch => {
 }
 
 export const fetchImages = () => async dispatch => {
-  const response = await axios.get(`/images`)
+  const response = await axios.get(`/api/images`)
   dispatch({
     type: FETCH_IMAGES,
     payload: response.data

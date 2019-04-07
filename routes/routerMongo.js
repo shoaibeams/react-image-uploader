@@ -35,16 +35,8 @@ module.exports = (app, db) => {
     res.json()
   })
 
-  app.get('/images', async (req, res) => {
+  app.get('/api/images', async (req, res) => {
     const images = await Image.find({}, { secure_url: 1, original_filename: 1 })
     res.json(images)
-  })
-
-  app.post('/new', (req, res) => {
-    res.send({ hello: 'there' })
-  })
-
-  app.get('/test', (req, res) => {
-    res.send({ hello: 'there' })
   })
 }

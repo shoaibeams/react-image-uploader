@@ -37,7 +37,7 @@ module.exports = (app, db) => {
     res.json()
   })
 
-  app.get('/images', (req, res) => {
+  app.get('/api/images', (req, res) => {
     let images = []
     db.query(fetchImages, (error, results) => {
       if (error) {
