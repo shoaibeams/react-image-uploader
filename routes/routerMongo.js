@@ -40,6 +40,10 @@ module.exports = (app, db) => {
     res.json(images)
   })
 
+  app.post('/new', (req, res) => {
+    res.send({ hello: 'there' })
+  })
+
   app.get('/test', (req, res) => {
     res.send({ hello: 'there' })
   })

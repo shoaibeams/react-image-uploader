@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Uploader from './components/Uploader'
 import ImageViewer from './components/ImageViewer'
 import Test from './components/Test'
+import NewA from './components/NewA'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
@@ -19,9 +20,10 @@ ReactDOM.render(
     <Router>
       <Header />
       <Route path="/" exact component={App} />
-      <Route path="/upload" exact component={Uploader} />
-      <Route path="/images" exact component={ImageViewer} />
-      <Route path="/test" exact component={Test} />
+      <Route path="/upload" component={Uploader} />
+      <Route path="/images" component={ImageViewer} />
+      <Route path="/test" component={NewA} />
+      <Route path="/new" component={NewA} />
     </Router>
   </Provider>,
   document.getElementById('root')
