@@ -39,4 +39,8 @@ module.exports = (app, db) => {
     const images = await Image.find({}, { secure_url: 1, original_filename: 1 })
     res.json(images)
   })
+
+  app.get('/test', (req, res) => {
+    res.send({ hello: 'there' })
+  })
 }
