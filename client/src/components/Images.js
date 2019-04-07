@@ -8,7 +8,7 @@ export default ({ images, renderOne, index }) => {
         <ReactImageMagnify
           {...{
             smallImage: {
-              alt: 'Wristwatch by Ted Baker London',
+              alt: '',
               isFluidWidth: false,
               width: 200,
               height: 200,
